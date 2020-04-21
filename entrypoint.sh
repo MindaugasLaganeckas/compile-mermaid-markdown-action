@@ -31,21 +31,17 @@ function main {
     if [[ -f "${file}" ]]; then
       printf "Attempting compile of: %s\n" "${file}"
 
-      file_dirname=$(dirname "${file}")
       file_basename=$(basename "${file}")
       file_name="${file_basename%.*}"
       file_type="${file_basename##*.}"
 
-
       if [[ "${file_type}" == "mermaid" ]]; then
 
-        output_path="${file_dirname}"
         output_file="$(dasherize_name ${file_basename}).png"
         c_mermaid "${file}" "${output_path}/${output_file}"
 
       elif [[ "${file_type}" == "md" ]]; then
 
-        output_path="${outpath}"
         c_md_mermaid "${file}" "${output_path}"
 
       else
