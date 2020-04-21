@@ -35,14 +35,17 @@ function main {
       file_name="${file_basename%.*}"
       file_type="${file_basename##*.}"
 
+
       if [[ "${file_type}" == "mermaid" ]]; then
 
+        output_path="${outpath}"
         output_file="$(dasherize_name ${file_basename}).png"
-        printf "Got output path MLG: %s\n" "${output_path}/${output_file}"
+      
         c_mermaid "${file}" "${output_path}/${output_file}"
 
       elif [[ "${file_type}" == "md" ]]; then
 
+        output_path="${outpath}"
         c_md_mermaid "${file}" "${output_path}"
 
       else
