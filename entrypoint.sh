@@ -38,6 +38,7 @@ function main {
       if [[ "${file_type}" == "mermaid" ]]; then
 
         output_file="$(dasherize_name ${file_basename}).png"
+        printf "Got output path MLG: %s\n" "${output_path}/${output_file}"
         c_mermaid "${file}" "${output_path}/${output_file}"
 
       elif [[ "${file_type}" == "md" ]]; then
